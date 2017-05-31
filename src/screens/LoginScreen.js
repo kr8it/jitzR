@@ -29,6 +29,7 @@ export default class LoginScreen extends Component {
           <Input
             placeholder="login@email.com"
             label="Email"
+            value="admin@club.com"
           />
         </CardSection>
         <CardSection>
@@ -36,6 +37,7 @@ export default class LoginScreen extends Component {
             secureTextEntry
             placeholder="password"
             label="Password"
+            value="password"
           />
           </CardSection>
         </Card>

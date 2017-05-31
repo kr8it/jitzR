@@ -8,14 +8,15 @@ import {
 } from 'react-native';
 
 import Ionicon from 'react-native-vector-icons/Ionicons';
-
+let menuIcon
 export default class HomeScreen extends Component {
 
   componentDidMount() {
-    Ionicon.getImageSource('ios-menu', 27).then((menu) => {
+    Ionicon.getImageSource('ios-menu', 35).then((menu) => {
+      menuIcon=menu
       this.props.navigator.setButtons({
           leftButtons: [
-              { id: 'menu', icon: menu }
+              { id: 'menu', icon: menuIcon }
           ]
       });
     });
@@ -27,6 +28,7 @@ export default class HomeScreen extends Component {
   }
 
   onPressDrawerListItem(deepLink) {
+    console.log('deep link is :', deepLink)
     let screenTitle
     let screenRef
 
@@ -79,7 +81,7 @@ export default class HomeScreen extends Component {
       navigatorButtons: {
         leftButtons: [
           {
-            title: 'Menu',
+            icon: menuIcon,
             id: 'menu'
           }
         ]
@@ -129,5 +131,8 @@ const styles = StyleSheet.create({
   text:{
     fontSize: 25,
     paddingTop: 200
-  }
+  },
+  drawerListIcon: {
+      width: 27
+  },
 });

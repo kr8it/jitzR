@@ -99,8 +99,8 @@ export default class SideMenu extends Component {
   }
 
   render() {
-    const homeIcon = (<Ionicon name="ios-home" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const instructorIcon = (<Ionicon name="ios-man" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const homeIcon = (<Ionicon name="ios-home" size={26}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const instructorIcon = (<Ionicon name="ios-man" size={26} style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
     const billingIcon = (<Ionicon name="ios-card" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
     const profileIcon = (<Ionicon name="ios-person" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
     const merchandiseIcon = (<Ionicon name="ios-cart" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
