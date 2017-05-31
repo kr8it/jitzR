@@ -5,10 +5,16 @@ registerScreens();
 
 Navigation.startSingleScreenApp({
   screen: {
-    screen: 'example.LoginScreen',
-    title: 'Authentication'
+    screen: 'jitzer.LoginScreen',
+    title: 'Login'
   },
   appStyle: {
     orientation: 'portrait'
+  },
+  drawer: {
+    left: {
+      screen: 'jitzer.SideMenu',
+      passProps: {}
+    }
   }
 });

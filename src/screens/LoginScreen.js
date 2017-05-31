@@ -12,21 +12,12 @@ export default class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
-  onNavigatorEvent(event) {
-    if (event.type == 'NavBarButtonPress') {
-      if (event.id == 'menu') {
-        AlertIOS.alert('NavBar', 'menu button pressed');
-      }
-    }
-  }
-
-  showMainScreen = () => {
+  showHomeScreen = () => {
       this.props.navigator.push({
-          title: 'Main Screen',
-          screen: 'example.HomeScreen',
+          title: 'Home Screen',
+          screen: 'jitzer.HomeScreen'
       });
   };
 
@@ -49,7 +40,7 @@ export default class LoginScreen extends Component {
           </CardSection>
         </Card>
         <CardSection>
-          <Button onPress={this.showMainScreen}>
+          <Button onPress={this.showHomeScreen}>
             Log in
           </Button>
         </CardSection>

@@ -7,16 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default class HomeScreen extends Component {
-
-  static navigatorButtons = {
-    leftButtons: [
-      {
-        title: 'Menu',
-        id: 'menu'
-      }
-    ]
-  };
+export default class Content extends Component {
 
   constructor(props) {
     super(props);
@@ -37,7 +28,7 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text>This is home screen</Text>
+        <Text>This is content screen</Text>
       </ScrollView>
     );
   }
