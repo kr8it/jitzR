@@ -26,10 +26,10 @@ Row.propTypes = {
 const styles = StyleSheet.create({
     row: {
         height: 48,
-        paddingHorizontal: 16,
+        paddingHorizontal: 6,
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-start',
         borderBottomWidth: 1,
         borderBottomColor: 'rgba(0, 0, 0, 0.054)',
     },

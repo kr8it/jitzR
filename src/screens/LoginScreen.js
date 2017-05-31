@@ -16,7 +16,7 @@ export default class LoginScreen extends Component {
 
   showHomeScreen = () => {
       this.props.navigator.push({
-          title: 'Home Screen',
+          title: 'Home',
           screen: 'jitzer.HomeScreen'
       });
   };

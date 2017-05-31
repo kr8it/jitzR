@@ -23,7 +23,69 @@ export default class HomeScreen extends Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
+  onPressDrawerListItem(deepLink) {
+    let screenTitle
+    let screenRef
+
+    switch (deepLink) {
+      case 'MyClub':
+        screenTitle='My Club'
+        screenRef='jitzer.MyClubScreen'
+        break
+      case 'Instructors':
+        screenTitle='Instructors'
+        screenRef='jitzer.InstructorsScreen'
+        break
+      case 'MyContent':
+        screenTitle='My Content'
+        screenRef='jitzer.MyContentScreen'
+        break
+      case 'Members':
+        screenTitle='Members'
+        screenRef='jitzer.MembersScreen'
+        break
+      case 'Billing':
+        screenTitle='Billing'
+        screenRef='jitzer.BillingScreen'
+        break
+      case 'Services':
+        screenTitle='Services'
+        screenRef='jitzer.ServicesScreen'
+        break
+      case 'Profile':
+        screenTitle='Profile'
+        screenRef='jitzer.ProfileScreen'
+        break
+      case 'Merchandise':
+        screenTitle='Merchandise'
+        screenRef='jitzer.MerchandiseScreen'
+        break
+      case 'MyCalendar':
+        screenTitle='My Calendar'
+        screenRef='jitzer.MyCalendarScreen'
+        break
+      default:
+        screenTitle='Home'
+        screenRef='jitzer.HomeScreen'
+        break
+    }
+
+    this.props.navigator.push({
+      title: screenTitle,
+      screen: screenRef,
+      navigatorButtons: {
+        leftButtons: [
+          {
+            title: 'Menu',
+            id: 'menu'
+          }
+        ]
+      }
+    });
+  }
+
   onNavigatorEvent(event) {
+
     if (event.type == 'NavBarButtonPress') {
       if (event.id == 'menu') {
         this.props.navigator.toggleDrawer({
@@ -32,12 +94,19 @@ export default class HomeScreen extends Component {
         });
       }
     }
+
+    if (event.type == 'DeepLink') {
+      const parts = event.link;
+      this.onPressDrawerListItem(parts);
+    }
   }
 
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text>This is home screen</Text>
+        <View style={styles.content}>
+          <Text style={styles.text}>Home screen</Text>
+        </View>
       </ScrollView>
     );
   }
@@ -50,11 +119,12 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'white'
   },
-  button: {
-    textAlign: 'center',
-    fontSize: 18,
-    marginBottom: 10,
-    marginTop:10,
-    color: 'blue'
+  content:{
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text:{
+    fontSize: 25,
+    paddingTop: 200
   }
 });

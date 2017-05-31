@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default class Content extends Component {
+export default class MembersScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -28,7 +28,9 @@ export default class Content extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text>This is content screen</Text>
+        <View style={styles.content}>
+          <Text style={styles.text}>Members screen</Text>
+        </View>
       </ScrollView>
     );
   }
@@ -41,11 +43,12 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'white'
   },
-  button: {
-    textAlign: 'center',
-    fontSize: 18,
-    marginBottom: 10,
-    marginTop:10,
-    color: 'blue'
+  content:{
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text:{
+    fontSize: 25,
+    paddingTop: 200
   }
 });
