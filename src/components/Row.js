@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, Platform } from 'react-native';
 
-function Row({ title, onPress, platform }) {
+function Row({ title, onPress, platform, icon }) {
     if (platform && platform !== Platform.OS) {
         return <View />;
     }
@@ -12,6 +12,7 @@ function Row({ title, onPress, platform }) {
             underlayColor={'rgba(0, 0, 0, 0.054)'}
         >
             <View style={styles.row}>
+                {icon}
                 <Text style={styles.text}>{title}</Text>
             </View>
         </TouchableHighlight>
@@ -34,7 +35,8 @@ const styles = StyleSheet.create({
         borderBottomColor: 'rgba(0, 0, 0, 0.054)',
     },
     text: {
-        fontSize: 16,
+        fontSize: 25,
+        paddingLeft: 15
     },
 });
 

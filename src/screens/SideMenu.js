@@ -8,10 +8,17 @@ import {
   Button,
   ToastAndroid
 } from 'react-native';
-
+import Ionicon from 'react-native-vector-icons/Ionicons';
 import Row from '../components/Row';
+let menuIcon
 
 export default class SideMenu extends Component {
+
+  componentDidMount() {
+    Ionicon.getImageSource('ios-menu', 27).then((menu) => {
+      menuIcon=menu
+    });
+  }
 
   _goToHomeScreen() {
       this._toggleDrawer();
@@ -92,19 +99,30 @@ export default class SideMenu extends Component {
   }
 
   render() {
+    const homeIcon = (<Ionicon name="ios-home" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const instructorIcon = (<Ionicon name="ios-man" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const billingIcon = (<Ionicon name="ios-card" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const profileIcon = (<Ionicon name="ios-person" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const merchandiseIcon = (<Ionicon name="ios-cart" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const contentIcon = (<Ionicon name="ios-paper" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const memberIcon = (<Ionicon name="ios-people" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const calendarIcon = (<Ionicon name="ios-calendar" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const serviceIcon = (<Ionicon name="ios-bowtie" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const clubIcon = (<Ionicon name="ios-star" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+
       return (
         <View style={styles.container}>
             <View style={styles.drawerList}>
-              <Row title={'Home'} onPress={this._goToHomeScreen.bind(this)} />
-              <Row title={'My Club'} onPress={this._goToMyClubScreen.bind(this)} />
-              <Row title={'Instructors'} onPress={this._goToInstructorsScreen.bind(this)} />
-              <Row title={'My Content'} onPress={this._goToMyContentScreen.bind(this)} />
-              <Row title={'Members'} onPress={this._goToMembersScreen.bind(this)} />
-              <Row title={'Calendar'} onPress={this._goToMyCalendarScreen.bind(this)} />
-              <Row title={'Services'} onPress={this._goToServicesScreen.bind(this)} />
-              <Row title={'Merchandise'} onPress={this._goToMerchandiseScreen.bind(this)} />
-              <Row title={'Billing'} onPress={this._goToBillingScreen.bind(this)} />
-              <Row title={'Profile'} onPress={this._goToProfileScreen.bind(this)} />
+              <Row title={'Home'} icon={homeIcon} onPress={this._goToHomeScreen.bind(this)} />
+              <Row title={'My Club'} icon={clubIcon}  onPress={this._goToMyClubScreen.bind(this)} />
+              <Row title={'Instructors'} icon={instructorIcon} onPress={this._goToInstructorsScreen.bind(this)} />
+              <Row title={'My Content'} icon={contentIcon} onPress={this._goToMyContentScreen.bind(this)} />
+              <Row title={'Members'} icon={memberIcon} onPress={this._goToMembersScreen.bind(this)} />
+              <Row title={'Calendar'} icon={calendarIcon} onPress={this._goToMyCalendarScreen.bind(this)} />
+              <Row title={'Services'} icon={serviceIcon} onPress={this._goToServicesScreen.bind(this)} />
+              <Row title={'Merchandise'} icon={merchandiseIcon} onPress={this._goToMerchandiseScreen.bind(this)} />
+              <Row title={'Billing'} icon={billingIcon} onPress={this._goToBillingScreen.bind(this)} />
+              <Row title={'Profile'} icon={profileIcon} onPress={this._goToProfileScreen.bind(this)} />
             </View>
         </View>
       );
