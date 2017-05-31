@@ -5,10 +5,19 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-
-import Screen from './Screen'
+import Ionicon from 'react-native-vector-icons/Ionicons';
 
 export default class MyClubScreen extends Component {
+
+  componentDidMount() {
+    Ionicon.getImageSource('ios-menu', 27).then((menu) => {
+      this.props.navigator.setButtons({
+          leftButtons: [
+              { id: 'menu', icon: menu }
+          ]
+      });
+    });
+  }
 
   constructor(props) {
     super(props);
@@ -24,7 +33,7 @@ export default class MyClubScreen extends Component {
         });
       }
     }
-  }  
+  }
 
   render() {
     return (

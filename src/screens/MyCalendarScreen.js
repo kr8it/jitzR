@@ -6,8 +6,19 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
+import Ionicon from 'react-native-vector-icons/Ionicons';
 
 export default class MyCalendarScreen extends Component {
+
+  componentDidMount() {
+    Ionicon.getImageSource('ios-menu', 27).then((menu) => {
+      this.props.navigator.setButtons({
+          leftButtons: [
+              { id: 'menu', icon: menu }
+          ]
+      });
+    });
+  }
 
   constructor(props) {
     super(props);

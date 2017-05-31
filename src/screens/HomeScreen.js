@@ -7,19 +7,19 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-Icon.getImageSource('user', 20, 'red').then((source) => this.setState({ myIcon: source }));
+import Ionicon from 'react-native-vector-icons/Ionicons';
 
 export default class HomeScreen extends Component {
 
-  static navigatorButtons = {
-    leftButtons: [
-      {
-        icon: myIcon,
-        id: 'menu'
-      }
-    ]
-  };
+  componentDidMount() {
+    Ionicon.getImageSource('ios-menu', 27).then((menu) => {
+      this.props.navigator.setButtons({
+          leftButtons: [
+              { id: 'menu', icon: menu }
+          ]
+      });
+    });
+  }
 
   constructor(props) {
     super(props);
