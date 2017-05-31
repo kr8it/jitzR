@@ -7,12 +7,15 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+Icon.getImageSource('user', 20, 'red').then((source) => this.setState({ myIcon: source }));
+
 export default class HomeScreen extends Component {
 
   static navigatorButtons = {
     leftButtons: [
       {
-        title: 'Menu',
+        icon: myIcon,
         id: 'menu'
       }
     ]
