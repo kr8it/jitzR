@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         borderBottomColor: 'rgba(0, 0, 0, 0.054)',
     },
     text: {
-        fontSize: 25,
+        fontSize: 20,
         paddingLeft: 15
     },
 });

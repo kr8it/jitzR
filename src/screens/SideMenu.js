@@ -99,16 +99,16 @@ export default class SideMenu extends Component {
   }
 
   render() {
-    const homeIcon = (<Ionicon name="ios-home" size={26}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const instructorIcon = (<Ionicon name="ios-man" size={26} style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const billingIcon = (<Ionicon name="ios-card" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const profileIcon = (<Ionicon name="ios-person" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const merchandiseIcon = (<Ionicon name="ios-cart" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const contentIcon = (<Ionicon name="ios-paper" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const memberIcon = (<Ionicon name="ios-people" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const calendarIcon = (<Ionicon name="ios-calendar" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const serviceIcon = (<Ionicon name="ios-bowtie" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const clubIcon = (<Ionicon name="ios-star" size={26} color="#000000" style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const homeIcon = (<Ionicon name="ios-home" size={30} style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const instructorIcon = (<Ionicon name="ios-man" size={30} style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const billingIcon = (<Ionicon name="ios-card" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const profileIcon = (<Ionicon name="ios-person" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const merchandiseIcon = (<Ionicon name="ios-cart" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const contentIcon = (<Ionicon name="ios-paper" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const memberIcon = (<Ionicon name="ios-people" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const calendarIcon = (<Ionicon name="ios-calendar" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const serviceIcon = (<Ionicon name="ios-bowtie" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const clubIcon = (<Ionicon name="ios-star" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
 
       return (
         <View style={styles.container}>
