@@ -28,9 +28,16 @@ export default class HomeScreen extends Component {
   }
 
   onPressDrawerListItem(deepLink) {
-    console.log('deep link is :', deepLink)
     let screenTitle
     let screenRef
+    let navButtons = {
+      leftButtons: [
+        {
+          icon: menuIcon,
+          id: 'menu'
+        }
+      ]
+    }
 
     switch (deepLink) {
       case 'MyClub':
@@ -68,25 +75,24 @@ export default class HomeScreen extends Component {
       case 'MyCalendar':
         screenTitle='My Calendar'
         screenRef='jitzer.MyCalendarScreen'
-        break
+        break      
       default:
         screenTitle='Home'
         screenRef='jitzer.HomeScreen'
         break
     }
 
-    this.props.navigator.push({
-      title: screenTitle,
-      screen: screenRef,
-      navigatorButtons: {
-        leftButtons: [
-          {
-            icon: menuIcon,
-            id: 'menu'
-          }
-        ]
-      }
-    });
+    if (deepLink=='Login') {
+      this.props.navigator.popToRoot({
+        animated: true
+      });
+    } else {
+      this.props.navigator.push({
+        title: screenTitle,
+        screen: screenRef,
+        navigatorButtons: navButtons
+      });
+    }
   }
 
   onNavigatorEvent(event) {

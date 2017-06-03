@@ -7,10 +7,13 @@ import {
   View,
   ScrollView,
   StyleSheet,
+  Dimensions
 } from 'react-native';
+import {Input, Button, Card, CardSection} from '../components/common';
 
 import Video from 'react-native-video';
 import Ionicon from 'react-native-vector-icons/Ionicons';
+let fullIcon
 
 export default class MyContentScreen extends Component {
 
@@ -78,55 +81,16 @@ export default class MyContentScreen extends Component {
     }
   }
 
-  renderSkinControl(skin) {
-    const isSelected = this.state.skin == skin;
-    const selectControls = skin == 'native' || skin == 'embed';
+  renderResizeModeControl() {
     return (
-      <TouchableOpacity onPress={() => { this.setState({
-          controls: selectControls,
-          skin: skin
-        }) }}>
-        <Text style={[styles.controlOption, {fontWeight: isSelected ? "bold" : "normal"}]}>
-          {skin}
+      <TouchableOpacity onPress={() => {
+         this.player.presentFullscreenPlayer()
+       }}>
+        <Text>
+          {fullIcon}
         </Text>
       </TouchableOpacity>
     );
-  }
-
-  renderRateControl(rate) {
-    const isSelected = (this.state.rate == rate);
-
-    return (
-      <TouchableOpacity onPress={() => { this.setState({rate: rate}) }}>
-        <Text style={[styles.controlOption, {fontWeight: isSelected ? "bold" : "normal"}]}>
-          {rate}x
-        </Text>
-      </TouchableOpacity>
-    )
-  }
-
-  renderResizeModeControl(resizeMode) {
-    const isSelected = (this.state.resizeMode == resizeMode);
-
-    return (
-      <TouchableOpacity onPress={() => { this.setState({resizeMode: resizeMode}) }}>
-        <Text style={[styles.controlOption, {fontWeight: isSelected ? "bold" : "normal"}]}>
-          {resizeMode}
-        </Text>
-      </TouchableOpacity>
-    )
-  }
-
-  renderVolumeControl(volume) {
-    const isSelected = (this.state.volume == volume);
-
-    return (
-      <TouchableOpacity onPress={() => { this.setState({volume: volume}) }}>
-        <Text style={[styles.controlOption, {fontWeight: isSelected ? "bold" : "normal"}]}>
-          {volume * 100}%
-        </Text>
-      </TouchableOpacity>
-    )
   }
 
   renderCustomSkin() {
@@ -135,44 +99,40 @@ export default class MyContentScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.fullScreen} onPress={() => {this.setState({paused: !this.state.paused})}}>
-          <Video
-            source={require('../assets/SampleVideo10mb.mp4')}
-            style={styles.fullScreen}
-            rate={this.state.rate}
-            paused={this.state.paused}
-            volume={this.state.volume}
-            muted={this.state.muted}
-            ignoreSilentSwitch={this.state.ignoreSilentSwitch}
-            resizeMode={this.state.resizeMode}
-            onLoad={this.onLoad}
-            onBuffer={this.onBuffer}
-            onProgress={this.onProgress}
-            onEnd={() => { AlertIOS.alert('Done!') }}
-            repeat={true}
-          />
-        </TouchableOpacity>
-
-        <View style={styles.controls}>
-          <View style={styles.generalControls}>
-            <View style={styles.volumeControl}>
-              {this.renderVolumeControl(0.5)}
-              {this.renderVolumeControl(1)}
-              {this.renderVolumeControl(1.5)}
-            </View>
-
-            <View style={styles.resizeModeControl}>
-              {this.renderResizeModeControl('cover')}
-              {this.renderResizeModeControl('contain')}
-              {this.renderResizeModeControl('stretch')}
+        <View style={styles.mediaSection}>
+          <View style={styles.player}>
+            <TouchableOpacity onPress={() => {this.setState({paused: !this.state.paused})}}>
+              <Video
+                ref={(ref) => {
+                  this.player = ref
+                }}
+                source={require('../assets/armbar-closed-guard.mp4')}
+                style={styles.player}
+                rate={this.state.rate}
+                paused={this.state.paused}
+                volume={this.state.volume}
+                muted={this.state.muted}
+                ignoreSilentSwitch={this.state.ignoreSilentSwitch}
+                resizeMode='contain'
+                onLoad={this.onLoad}
+                onBuffer={this.onBuffer}
+                onProgress={this.onProgress}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.controls}>
+            <View style={styles.generalControls}>
+              <View style={styles.progress}>
+                <View style={[styles.innerProgressCompleted, {flex: flexCompleted}]}></View>
+                <View style={[styles.innerProgressRemaining, {flex: flexRemaining}]} ></View>
+              </View>
+              <View style={styles.resizeModeControl}>
+                {this.renderResizeModeControl('fullScreen')}
+              </View>
             </View>
           </View>
-
-          <View style={styles.trackingControls}>
-            <View style={styles.progress}>
-              <View style={[styles.innerProgressCompleted, {flex: flexCompleted}]} />
-              <View style={[styles.innerProgressRemaining, {flex: flexRemaining}]} />
-            </View>
+          <View style={styles.videoDetails}>
+            <Text> Video details </Text>
           </View>
         </View>
       </View>
@@ -180,6 +140,7 @@ export default class MyContentScreen extends Component {
   }
 
   render() {
+    fullIcon = (<Ionicon name="ios-expand" size={35} style={styles.fullScreenIcon} />);
     return this.renderCustomSkin();
   }
 }
@@ -187,30 +148,41 @@ export default class MyContentScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    backgroundColor: 'white',
   },
-  fullScreen: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
+  mediaSection: {
+    flex: 1,
+    height: 280,
+    width: Dimensions.get('window').width
+  },
+  player: {
+    height: 250,
+    width: Dimensions.get('window').width
   },
   controls: {
-    backgroundColor: "transparent",
+    flex: .5,
+    backgroundColor: "black",
     borderRadius: 5,
-    position: 'absolute',
-    bottom: 44,
-    left: 4,
-    right: 4,
+    left: 0,
+    right: 0,
+    paddingBottom: 1,
+    paddingBottom: 1
+  },
+  videoDetails: {
+    flex: 4
   },
   progress: {
-    flex: 1,
+    flex: 8,
     flexDirection: 'row',
     borderRadius: 3,
     overflow: 'hidden',
+  },
+  fullScreenIcon: {
+    width: 27,
+    fontWeight: "200",
+    color: 'white'
   },
   innerProgressCompleted: {
     height: 20,
@@ -222,21 +194,12 @@ const styles = StyleSheet.create({
   },
   generalControls: {
     flex: 1,
+    paddingTop: 10,
     flexDirection: 'row',
     overflow: 'hidden',
-    paddingBottom: 10,
+    paddingBottom: 1,
   },
   skinControl: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  rateControl: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  volumeControl: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -244,25 +207,16 @@ const styles = StyleSheet.create({
   resizeModeControl: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  ignoreSilentSwitchControl: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-end',
+    paddingRight: 4
   },
   controlOption: {
     alignSelf: 'center',
-    fontSize: 11,
-    color: "white",
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "black",
     paddingLeft: 2,
     paddingRight: 2,
-    lineHeight: 12,
-  },
-  nativeVideoControls: {
-    top: 184,
-    height: 300
+    lineHeight: 30,
   }
 });

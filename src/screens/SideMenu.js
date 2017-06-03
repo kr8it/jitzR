@@ -90,6 +90,13 @@ export default class SideMenu extends Component {
     });
   }
 
+  _goToLoginScreen() {
+      this._toggleDrawer();
+      this.props.navigator.handleDeepLink({
+        link: 'Login'
+    });
+  }
+
   _toggleDrawer() {
     this.props.navigator.toggleDrawer({
         to: 'closed',
@@ -113,7 +120,6 @@ export default class SideMenu extends Component {
       return (
         <View style={styles.container}>
             <View style={styles.drawerList}>
-              <Row title={'Home'} icon={homeIcon} onPress={this._goToHomeScreen.bind(this)} />
               <Row title={'My Club'} icon={clubIcon}  onPress={this._goToMyClubScreen.bind(this)} />
               <Row title={'Instructors'} icon={instructorIcon} onPress={this._goToInstructorsScreen.bind(this)} />
               <Row title={'My Content'} icon={contentIcon} onPress={this._goToMyContentScreen.bind(this)} />
@@ -123,6 +129,7 @@ export default class SideMenu extends Component {
               <Row title={'Merchandise'} icon={merchandiseIcon} onPress={this._goToMerchandiseScreen.bind(this)} />
               <Row title={'Billing'} icon={billingIcon} onPress={this._goToBillingScreen.bind(this)} />
               <Row title={'Profile'} icon={profileIcon} onPress={this._goToProfileScreen.bind(this)} />
+              <Row title={'Logout'} icon={profileIcon} onPress={this._goToLoginScreen.bind(this)} />
             </View>
         </View>
       );

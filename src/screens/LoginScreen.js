@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {
+  Image,
   Text,
   View,
   StyleSheet,
@@ -24,28 +25,35 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <Card>
-        <CardSection>
-          <Input
-            placeholder="login@email.com"
-            label="Email"
-            value="admin@club.com"
+        <View style={styles.logo}>
+          <Image
+            source={require('../assets/logo.png')}
           />
-        </CardSection>
-        <CardSection>
-          <Input
-            secureTextEntry
-            placeholder="password"
-            label="Password"
-            value="password"
-          />
-          </CardSection>
-        </Card>
-        <CardSection>
-          <Button onPress={this.showHomeScreen}>
-            Log in
-          </Button>
-        </CardSection>
+        </View>
+        <View style={styles.login}>
+          <Card>
+            <CardSection>
+              <Input
+                placeholder="login@email.com"
+                label="Email"
+                value="admin@club.com"
+              />
+            </CardSection>
+            <CardSection>
+              <Input
+                secureTextEntry
+                placeholder="password"
+                label="Password"
+                value="password"
+              />
+              </CardSection>
+              <CardSection>
+                <Button onPress={this.showHomeScreen}>
+                  Log in
+                </Button>
+              </CardSection>
+            </Card>
+          </View>
       </View>
     );
   }
@@ -54,6 +62,16 @@ export default class LoginScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: 20
+  },
+  logo: {
+    flex:1,
+    paddingBottom: 10
+  },
+  login: {
+    flex:1,
+    paddingBottom: 10
   }
 });

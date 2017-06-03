@@ -6,7 +6,11 @@ registerScreens();
 Navigation.startSingleScreenApp({
   screen: {
     screen: 'jitzer.LoginScreen',
-    title: 'Login'
+    title: 'Login',
+    navigatorButtons: {
+      leftButtons: [],
+      rightButtons: [],
+    }
   },
   appStyle: {
     orientation: 'portrait'
