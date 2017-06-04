@@ -176,7 +176,6 @@ export default class HomeScreen extends Component {
         }
       }
     }
-
     return { dataBlob, sectionIds, rowIds };
   }
 
@@ -185,7 +184,7 @@ export default class HomeScreen extends Component {
       <ListView
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(data) => <PositionRow {...data} />}
+        renderRow={(rowData) => <PositionRow {...rowData} />}
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
         renderHeader={() => <Header />}
         renderFooter={() => <Footer />}

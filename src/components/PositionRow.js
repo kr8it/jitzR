@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const Row = (props) => (
+const PositionRow = (props) => (
   <View style={styles.container} >
     <Image
        style={styles.photo} source={require('../assets/img/thumbnail.png')}
     />
     <View style={styles.positionDetails}>
       <View>
-        <Text style={{fontWeight: 'bold', fontSize: 16}}>
+        <Text style={{fontSize: 16}}>
           {`${props.title}`}
         </Text>
       </View>
@@ -56,4 +56,4 @@ const Row = (props) => (
   </View>
 );
 
-export default Row;
+export default PositionRow;
