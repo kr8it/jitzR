@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
   }
 });
 
-function navigateToPositionDetails(positionData) {
-
+function navigateToPositionDetails(props) {
+  AlertIOS.alert('ssss', 'props')
 }
 
-function playVideo() {  
+function playVideo() {
   this.player.presentFullscreenPlayer()
 }
 
@@ -76,12 +76,9 @@ const PositionRow = (props) => (
         </TouchableOpacity>
       </View>
     </View>
-    <Image
-       style={styles.photo} source={{uri: props.video}}
-    />
     <TouchableHighlight
       underlayColor={'#D3D3D3'}
-      onPress={navigateToPositionDetails.bind(this, props)}
+      onPress={navigateToPositionDetails.bind(props)}
     >
       <View style={styles.positionDetails}>
         <View>
