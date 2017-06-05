@@ -50,11 +50,10 @@ const styles = StyleSheet.create({
 });
 
 function navigateToPositionDetails(positionData) {
-  
+
 }
 
-function playVideo(title) {
-  // this.setState({paused: !this.state.paused})
+function playVideo() {  
   this.player.presentFullscreenPlayer()
 }
 
@@ -63,7 +62,7 @@ const PositionRow = (props) => (
     <View>
       <View style={styles.player}>
         <TouchableOpacity onPress={() => {
-          playVideo(props.title)
+          playVideo()
         }}>
           <Video
             ref={(ref) => {
