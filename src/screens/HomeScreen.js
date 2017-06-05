@@ -157,18 +157,8 @@ export default class HomeScreen extends Component {
     return { dataBlob, sectionIds, rowIds };
   }
 
-  _navigateToPositionDetails(positionData) {
-    this.props.navigator.push({
-        screen: 'jitzer.PositionDetailsScreen',
-        title: 'Work Order',
-        passProps: {
-          positionData: positionData,
-        },
-      })
-  }
-
   _renderPositionRow(rowData) {
-    return <PositionRow {...rowData} />
+    return
   }
 
   render() {
@@ -176,7 +166,12 @@ export default class HomeScreen extends Component {
       <ListView
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={ this._renderPositionRow.bind(this) }
+        renderRow={(rowData) =>
+          <PositionRow
+            navigator={this.props.navigator}
+            rowData={rowData}
+          />
+        }
         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
         renderHeader={() => <Header />}
         renderFooter={() => <Footer />}

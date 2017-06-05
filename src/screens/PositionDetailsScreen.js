@@ -19,7 +19,6 @@ export default class PositionDetailsScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   state = {
@@ -35,6 +34,14 @@ export default class PositionDetailsScreen extends Component {
     ignoreSilentSwitch: null,
     isBuffering: false,
   };
+
+  getCurrentTimePercentage() {
+    if (this.state.currentTime > 0) {
+      return parseFloat(this.state.currentTime) / parseFloat(this.state.duration);
+    } else {
+      return 0;
+    }
+  }
 
   renderResizeModeControl() {
     return (
@@ -87,7 +94,7 @@ export default class PositionDetailsScreen extends Component {
             </View>
           </View>
           <View style={styles.videoDetails}>
-            <Text> Details for : {this.props.title} </Text>
+            <Text> Details for : {this.props.rowData.notes} </Text>
           </View>
         </View>
       </View>

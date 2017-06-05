@@ -12,6 +12,7 @@ import MyCalendarScreen from './MyCalendarScreen';
 import ProfileScreen from './ProfileScreen';
 import BillingScreen from './BillingScreen';
 import ServicesScreen from './ServicesScreen';
+import PositionDetailsScreen from './PositionDetailsScreen';
 
 // register all screens of the app (including internal ones)
 export function registerScreens() {
@@ -27,4 +28,5 @@ export function registerScreens() {
   Navigation.registerComponent('jitzer.ProfileScreen', () => ProfileScreen);
   Navigation.registerComponent('jitzer.BillingScreen', () => BillingScreen);
   Navigation.registerComponent('jitzer.ServicesScreen', () => ServicesScreen);
+  Navigation.registerComponent('jitzer.PositionDetailsScreen', () => PositionDetailsScreen);
 }
