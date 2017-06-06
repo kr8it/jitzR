@@ -123,7 +123,7 @@ export default class SideMenu extends Component {
               <Row title={'Home'} icon={homeIcon} onPress={this._goToHomeScreen.bind(this)} />
               <Row title={'My Club'} icon={clubIcon}  onPress={this._goToMyClubScreen.bind(this)} />
               <Row title={'Instructors'} icon={instructorIcon} onPress={this._goToInstructorsScreen.bind(this)} />
-              <Row title={'My Content'} icon={contentIcon} onPress={this._goToMyContentScreen.bind(this)} />
+              <Row title={'Upload Content'} icon={contentIcon} onPress={this._goToMyContentScreen.bind(this)} />
               <Row title={'Members'} icon={memberIcon} onPress={this._goToMembersScreen.bind(this)} />
               <Row title={'Calendar'} icon={calendarIcon} onPress={this._goToMyCalendarScreen.bind(this)} />
               <Row title={'Services'} icon={serviceIcon} onPress={this._goToServicesScreen.bind(this)} />

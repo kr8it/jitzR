@@ -9,7 +9,7 @@ import {
   StyleSheet,
   Dimensions
 } from 'react-native';
-import {Input, Button, Card, CardSection} from '../components/common';
+import {Input, Button, Card, CardSection, SectionDivider} from '../components/common';
 
 import Video from 'react-native-video';
 import Ionicon from 'react-native-vector-icons/Ionicons';
@@ -61,42 +61,52 @@ export default class PositionDetailsScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.mediaSection}>
-          <View style={styles.player}>
-            <TouchableOpacity onPress={() => {this.setState({paused: !this.state.paused})}}>
-              <Video
-                ref={(ref) => {
-                  this.player = ref
-                }}
-                source={require('../assets/armbar-closed-guard.mp4')}
-                style={styles.player}
-                rate={this.state.rate}
-                paused={this.state.paused}
-                volume={this.state.volume}
-                muted={this.state.muted}
-                ignoreSilentSwitch={this.state.ignoreSilentSwitch}
-                resizeMode='contain'
-                onLoad={this.onLoad}
-                onBuffer={this.onBuffer}
-                onProgress={this.onProgress}
-              />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.controls}>
-            <View style={styles.generalControls}>
-              <View style={styles.progress}>
-                <View style={[styles.innerProgressCompleted, {flex: flexCompleted}]}></View>
-                <View style={[styles.innerProgressRemaining, {flex: flexRemaining}]} ></View>
-              </View>
-              <View style={styles.resizeModeControl}>
-                {this.renderResizeModeControl('fullScreen')}
-              </View>
-            </View>
-          </View>
-          <View style={styles.videoDetails}>
-            <Text> Details for : {this.props.rowData.notes} </Text>
+        <View style={styles.player}>
+          <TouchableOpacity onPress={() => {this.setState({paused: !this.state.paused})}}>
+            <Video
+              ref={(ref) => {
+                this.player = ref
+              }}
+              source={require('../assets/armbar-closed-guard.mp4')}
+              style={styles.player}
+              rate={this.state.rate}
+              paused={this.state.paused}
+              volume={this.state.volume}
+              muted={this.state.muted}
+              ignoreSilentSwitch={this.state.ignoreSilentSwitch}
+              resizeMode='contain'
+              onLoad={this.onLoad}
+              onBuffer={this.onBuffer}
+              onProgress={this.onProgress}
+            />
+          </TouchableOpacity>
+          <View style={styles.resizeModeControl}>
+            {this.renderResizeModeControl('fullScreen')}
           </View>
         </View>
+        <SectionDivider headerText='Notes'/>
+        <View style={styles.notes}>
+          <Text style={{
+            textAlign: 'justify',
+            borderColor: '#cccece',
+            paddingTop: 10,
+            paddingBottom: 10,
+            paddingLeft:10,
+            paddingRight:10,
+            borderWidth: .5,
+            borderRadius: 10,
+            fontSize: 14,
+            borderStyle: 'solid'
+          }}>{this.props.positionData.notes}</Text>
+        </View>
+        <SectionDivider headerText='Tags'/>
+        <View style={styles.tags}>
+          <Text style={{textAlign: 'justify'}}>{this.props.positionData.tags}</Text>
+        </View>
+        <SectionDivider headerText='Belt Color'/>
+          <View style={styles.division}>
+            <Text style={{textAlign: 'justify'}}> {this.props.positionData.belt} </Text>            
+          </View>
       </View>
     );
   }
@@ -111,74 +121,68 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     backgroundColor: 'white',
   },
   mediaSection: {
-    flex: 1,
     height: 280,
     width: Dimensions.get('window').width
   },
   player: {
-    height: 250,
+    height: 200,
     width: Dimensions.get('window').width
   },
+  notes: {
+    height: 100,
+    borderRadius: 6,
+    paddingTop: 1,
+    alignItems: 'center'
+  },
+  tags: {
+    height: 40,
+    paddingTop: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  division: {
+    height: 20,
+    paddingTop: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    alignItems: 'center'
+  },
   controls: {
-    flex: .5,
-    backgroundColor: "black",
+    backgroundColor: "grey",
     borderRadius: 5,
     left: 0,
-    right: 0,
-    paddingBottom: 1,
-    paddingBottom: 1
-  },
-  videoDetails: {
-    flex: 4
+    right: 0
   },
   progress: {
-    flex: 8,
     flexDirection: 'row',
     borderRadius: 3,
-    overflow: 'hidden',
+    // overflow: 'hidden',
   },
   fullScreenIcon: {
     width: 27,
-    fontWeight: "200",
-    color: 'white'
+    fontWeight: "800",
+    color: 'white',
+    zIndex: 0
   },
   innerProgressCompleted: {
     height: 20,
-    backgroundColor: '#cccccc',
+    backgroundColor: 'red',
   },
   innerProgressRemaining: {
     height: 20,
-    backgroundColor: '#2C2C2C',
-  },
-  generalControls: {
-    flex: 1,
-    paddingTop: 10,
-    flexDirection: 'row',
-    overflow: 'hidden',
-    paddingBottom: 1,
+    backgroundColor: 'white',
   },
   skinControl: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
   },
   resizeModeControl: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     paddingRight: 4
-  },
-  controlOption: {
-    alignSelf: 'center',
-    fontSize: 30,
-    fontWeight: "bold",
-    color: "black",
-    paddingLeft: 2,
-    paddingRight: 2,
-    lineHeight: 30,
   }
 });

@@ -2,7 +2,7 @@ export default positions = [
   {
     "title": "Americana",
     "instructor": "Matt Cooper",
-    "tags": ["mount", "submission", "topPosition"],
+    "tags": ["  #mount", "  #submission", "  #topPosition"],
     "video": "armbar-closed-guard",
     "belt": "black",
     "picture": "../assets/img/thumbnail.png",
@@ -11,7 +11,7 @@ export default positions = [
   {
     "title": "Different Position",
     "instructor": "Alex Hales",
-    "tags": ["mount", "submission", "topPosition"],
+    "tags": ["  #mount", "  #submission", "  #topPosition"],
     "video": "armbar-closed-guard",
     "belt": "black",
     "picture": "../assets/img/thumbnail.png",
@@ -20,7 +20,7 @@ export default positions = [
   {
     "title": "New Position",
     "instructor": "Drew Moore",
-    "tags": ["mount", "submission", "topPosition"],
+    "tags": ["  #mount", "  #submission", "  #topPosition"],
     "video": "armbar-closed-guard",
     "belt": "black",
     "picture": "../assets/img/thumbnail.png",

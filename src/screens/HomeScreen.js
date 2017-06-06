@@ -70,7 +70,7 @@ export default class HomeScreen extends Component {
         screenRef='jitzer.InstructorsScreen'
         break
       case 'MyContent':
-        screenTitle='My Content'
+        screenTitle='Upload Content'
         screenRef='jitzer.MyContentScreen'
         break
       case 'Members':
@@ -155,10 +155,6 @@ export default class HomeScreen extends Component {
       }
     }
     return { dataBlob, sectionIds, rowIds };
-  }
-
-  _renderPositionRow(rowData) {
-    return
   }
 
   render() {

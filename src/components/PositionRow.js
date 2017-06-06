@@ -35,12 +35,12 @@ export default class PositionRow extends Component {
     isBuffering: false,
   };
 
-  navigateToPositionDetails(rowData) {
+  navigateToPositionDetails(positionData) {
     this.props.navigator.push({
       screen: 'jitzer.PositionDetailsScreen',
-      title: rowData.title,
+      title: positionData.title,
       passProps: {
-        rowData: rowData,
+        positionData: positionData,
       }
     });
   }
