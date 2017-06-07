@@ -67,7 +67,7 @@ export default class PositionDetailsScreen extends Component {
               ref={(ref) => {
                 this.player = ref
               }}
-              source={require('../assets/armbar-closed-guard.mp4')}
+              source={require('../assets/videos/armbar-closed-guard.mp4')}
               style={styles.player}
               rate={this.state.rate}
               paused={this.state.paused}
@@ -103,9 +103,9 @@ export default class PositionDetailsScreen extends Component {
         <View style={styles.tags}>
           <Text style={{textAlign: 'justify'}}>{this.props.positionData.tags}</Text>
         </View>
-        <SectionDivider headerText='Belt Color'/>
+        <SectionDivider headerText='Syllabus'/>
           <View style={styles.division}>
-            <Text style={{textAlign: 'justify'}}> {this.props.positionData.belt} </Text>            
+            <Text style={{textAlign: 'justify'}}> {this.props.positionData.syllabus} </Text>
           </View>
       </View>
     );

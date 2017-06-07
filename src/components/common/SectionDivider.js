@@ -22,7 +22,7 @@ const styles = {
     width: Dimensions.get('window').width,
     paddingTop: 1,
     paddingBottom: 1,
-    shadowColor: '#000',
+    shadowColor: '#000',    
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     elevation: .5,

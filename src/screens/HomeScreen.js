@@ -97,7 +97,7 @@ export default class HomeScreen extends Component {
         screenTitle='My Calendar'
         screenRef='jitzer.MyCalendarScreen'
         break
-      default:
+      case 'Home':
         screenTitle='Home'
         screenRef='jitzer.HomeScreen'
         break
@@ -140,7 +140,7 @@ export default class HomeScreen extends Component {
 
     for (let sectionId = 0; sectionId < alphabet.length; sectionId++) {
       const currentChar = alphabet[sectionId];
-      const instructors = data.filter((instructor) => instructor.instructor.toUpperCase().indexOf(currentChar) === 0);
+      const instructors = data.filter((instructor) => instructor.title.toUpperCase().indexOf(currentChar) === 0);
 
       if (instructors.length > 0) {
         sectionIds.push(sectionId);

@@ -121,14 +121,7 @@ export default class SideMenu extends Component {
         <View style={styles.container}>
             <View style={styles.drawerList}>
               <Row title={'Home'} icon={homeIcon} onPress={this._goToHomeScreen.bind(this)} />
-              <Row title={'My Club'} icon={clubIcon}  onPress={this._goToMyClubScreen.bind(this)} />
-              <Row title={'Instructors'} icon={instructorIcon} onPress={this._goToInstructorsScreen.bind(this)} />
               <Row title={'Upload Content'} icon={contentIcon} onPress={this._goToMyContentScreen.bind(this)} />
-              <Row title={'Members'} icon={memberIcon} onPress={this._goToMembersScreen.bind(this)} />
-              <Row title={'Calendar'} icon={calendarIcon} onPress={this._goToMyCalendarScreen.bind(this)} />
-              <Row title={'Services'} icon={serviceIcon} onPress={this._goToServicesScreen.bind(this)} />
-              <Row title={'Merchandise'} icon={merchandiseIcon} onPress={this._goToMerchandiseScreen.bind(this)} />
-              <Row title={'Billing'} icon={billingIcon} onPress={this._goToBillingScreen.bind(this)} />
               <Row title={'Profile'} icon={profileIcon} onPress={this._goToProfileScreen.bind(this)} />
               <Row title={'Logout'} icon={profileIcon} onPress={this._goToLoginScreen.bind(this)} />
             </View>
@@ -140,11 +133,11 @@ export default class SideMenu extends Component {
 const styles = StyleSheet.create({
   container: {
         flex: 1,
+        paddingTop: 50,
         paddingLeft: 25,
-        justifyContent: 'center'
+        justifyContent: 'flex-start'
     },
-    drawerList: {
-
+    drawerList: {      
     },
     drawerListIcon: {
         width: 27

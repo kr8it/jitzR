@@ -12,7 +12,11 @@ import {
 } from 'react-native';
 
 const videoFiles = {
-  'armbar-closed-guard'  : require('../assets/armbar-closed-guard.mp4'),
+  'armbar-closed-guard': require('../assets/videos/armbar-closed-guard.mp4'),
+  'escape-full-mount': require('../assets/videos/escape-full-mount.mp4'),
+  'escape-side-control': require('../assets/videos/escape-side-control.mp4'),
+  'guillotine-choke'  : require('../assets/videos/guillotine-choke.mp4'),
+  'rear-naked-choke'  : require('../assets/videos/rear-naked-choke.mp4'),
 }
 
 export default class PositionRow extends Component {
@@ -92,7 +96,7 @@ export default class PositionRow extends Component {
             </View>
             <View>
               <Text style={{fontWeight: 'bold', fontSize: 10}}>
-                {`${this.props.rowData.belt}`}
+                {`${this.props.rowData.syllabus}`}
               </Text>
             </View>
             <View>
