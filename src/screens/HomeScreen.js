@@ -61,57 +61,40 @@ export default class HomeScreen extends Component {
     }
 
     switch (deepLink) {
-      case 'MyClub':
-        screenTitle='My Club'
-        screenRef='jitzer.MyClubScreen'
-        break
-      case 'Instructors':
-        screenTitle='Instructors'
-        screenRef='jitzer.InstructorsScreen'
-        break
       case 'MyContent':
         screenTitle='Upload Content'
         screenRef='jitzer.MyContentScreen'
-        break
-      case 'Members':
-        screenTitle='Members'
-        screenRef='jitzer.MembersScreen'
-        break
-      case 'Billing':
-        screenTitle='Billing'
-        screenRef='jitzer.BillingScreen'
-        break
-      case 'Services':
-        screenTitle='Services'
-        screenRef='jitzer.ServicesScreen'
+        this.props.navigator.push({
+          title: screenTitle,
+          screen: screenRef,
+          navigatorButtons: navButtons
+        })
         break
       case 'Profile':
         screenTitle='Profile'
         screenRef='jitzer.ProfileScreen'
-        break
-      case 'Merchandise':
-        screenTitle='Merchandise'
-        screenRef='jitzer.MerchandiseScreen'
-        break
-      case 'MyCalendar':
-        screenTitle='My Calendar'
-        screenRef='jitzer.MyCalendarScreen'
+        this.props.navigator.push({
+          title: screenTitle,
+          screen: screenRef,
+          navigatorButtons: navButtons
+        })
         break
       case 'Home':
         screenTitle='Home'
         screenRef='jitzer.HomeScreen'
+        this.props.navigator.push({
+          title: screenTitle,
+          screen: screenRef,
+          navigatorButtons: navButtons
+        })
+        break
+      default:
         break
     }
 
     if (deepLink=='Login') {
       this.props.navigator.popToRoot({
         animated: true
-      });
-    } else {
-      this.props.navigator.push({
-        title: screenTitle,
-        screen: screenRef,
-        navigatorButtons: navButtons
       });
     }
   }

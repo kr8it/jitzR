@@ -27,59 +27,10 @@ export default class SideMenu extends Component {
     });
   }
 
-  _goToMyClubScreen() {
-      this._toggleDrawer();
-      this.props.navigator.handleDeepLink({
-        link: 'MyClub'
-    });
-  }
-
-  _goToInstructorsScreen() {
-      this._toggleDrawer();
-      this.props.navigator.handleDeepLink({
-        link: 'Instructors'
-    });
-  }
-
   _goToMyContentScreen() {
       this._toggleDrawer();
       this.props.navigator.handleDeepLink({
         link: 'MyContent'
-    });
-  }
-
-  _goToMembersScreen() {
-      this._toggleDrawer();
-      this.props.navigator.handleDeepLink({
-        link: 'Members'
-    });
-  }
-
-  _goToMyCalendarScreen() {
-      this._toggleDrawer();
-      this.props.navigator.handleDeepLink({
-        link: 'MyCalendar'
-    });
-  }
-
-  _goToServicesScreen() {
-      this._toggleDrawer();
-      this.props.navigator.handleDeepLink({
-        link: 'Services'
-    });
-  }
-
-  _goToMerchandiseScreen() {
-      this._toggleDrawer();
-      this.props.navigator.handleDeepLink({
-        link: 'Merchandise'
-    });
-  }
-
-  _goToBillingScreen() {
-      this._toggleDrawer();
-      this.props.navigator.handleDeepLink({
-        link: 'Billing'
     });
   }
 
@@ -107,15 +58,8 @@ export default class SideMenu extends Component {
 
   render() {
     const homeIcon = (<Ionicon name="ios-home" size={30} style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const instructorIcon = (<Ionicon name="ios-man" size={30} style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const billingIcon = (<Ionicon name="ios-card" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
     const profileIcon = (<Ionicon name="ios-person" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const merchandiseIcon = (<Ionicon name="ios-cart" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const contentIcon = (<Ionicon name="ios-paper" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const memberIcon = (<Ionicon name="ios-people" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const calendarIcon = (<Ionicon name="ios-calendar" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const serviceIcon = (<Ionicon name="ios-bowtie" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
-    const clubIcon = (<Ionicon name="ios-star" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);
+    const contentIcon = (<Ionicon name="ios-paper" size={30}  style={[styles.drawerListIcon, { paddingLeft: 3 }]} />);    
 
       return (
         <View style={styles.container}>
@@ -137,7 +81,7 @@ const styles = StyleSheet.create({
         paddingLeft: 25,
         justifyContent: 'flex-start'
     },
-    drawerList: {      
+    drawerList: {
     },
     drawerListIcon: {
         width: 27

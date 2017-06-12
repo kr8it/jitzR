@@ -2944,11 +2944,19 @@ react-devtools-core@^2.0.8:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-multiple-select@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-multiple-select/-/react-native-multiple-select-0.2.1.tgz#eb0847a0a6824913ddbf88c29f42f94c31c448c3"
+
 react-native-navigation@^1.1.84:
   version "1.1.84"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.84.tgz#f1686ada8372b0caaceca641dd86f7960c0a59e4"
   dependencies:
     lodash "4.x.x"
+
+react-native-picker@^4.0.18:
+  version "4.0.18"
+  resolved "https://registry.yarnpkg.com/react-native-picker/-/react-native-picker-4.0.18.tgz#cd75244bb7819e29c2910171120e62be8bf690fb"
 
 react-native-vector-icons@^4.2.0:
   version "4.2.0"

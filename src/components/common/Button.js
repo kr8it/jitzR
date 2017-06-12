@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { AlertIOS, Text, TouchableOpacity } from 'react-native';
 
-const Button = ({ onPress, children }) => {
+const Button = ({ onPress, children, style }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
+    <TouchableOpacity onPress={onPress} style={Object.assign(buttonStyle, style)}>
       <Text style={textStyle}>
         {children}
       </Text>
@@ -13,13 +13,13 @@ const Button = ({ onPress, children }) => {
   );
 };
 
-const styles = {  
+const styles = {
   textStyle: {
     alignSelf: 'center',
     color: 'white',
     fontSize: 20,
     fontWeight: '600',
-    paddingTop: 20,
+    paddingTop: 10,
     paddingBottom: 10,
     marginLeft: 5,
     marginRight: 5
