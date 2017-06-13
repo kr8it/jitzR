@@ -62,7 +62,7 @@ export default class HomeScreen extends Component {
 
     switch (deepLink) {
       case 'MyContent':
-        screenTitle='Upload Content'
+        screenTitle='Add Position'
         screenRef='jitzer.MyContentScreen'
         this.props.navigator.push({
           title: screenTitle,

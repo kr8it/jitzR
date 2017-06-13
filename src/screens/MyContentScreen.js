@@ -12,7 +12,7 @@ import {
   AsyncStorage
 } from 'react-native';
 
-import {Input, Button, Card, CardSection, SectionDivider} from '../components/common';
+import {Input, Button, Card, CardSection, SectionDivider, HorizontalDivider} from '../components/common';
 import Picker from 'react-native-picker';
 import Video from 'react-native-video';
 import Ionicon from 'react-native-vector-icons/Ionicons';
@@ -38,8 +38,10 @@ export default class MyContentScreen extends Component {
     super(props);
     this.state = {
       position: {
+        title: '',
+        instructor: '',
         notes:'',
-        syllabus: 'None'
+        syllabus: 'Select Belt Color'
       }
     }
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -114,8 +116,15 @@ export default class MyContentScreen extends Component {
   }
 
   saveData(value) {
-      AsyncStorage.setItem("position", value);
       this.state.position.notes = value
+      this.setState({"position": this.state.position});
+  }
+  saveTitle(value) {
+      this.state.position.title = value
+      this.setState({"position": this.state.position});
+  }
+  saveInstructor(value) {
+      this.state.position.instructor = value
       this.setState({"position": this.state.position});
   }
 
@@ -127,35 +136,49 @@ export default class MyContentScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <SectionDivider headerText="Media" />
-        <View style={styles.videoSection}>
-          <Button style={{backgroundColor: 'grey'}} onPress={this.addVideo.bind(this)}>
-            Add Video
-          </Button>
-        </View>
-        <SectionDivider headerText="Notes" />
-        <View style={styles.notesSection}>
+        <View style={styles.detailsSection}>
           <TextInput
-            placeholder="add notes here"
-            style={[styles.notesField]}
-            value={this.state.position.notes}
-            onChangeText={(text) => this.saveData(text)}
-            multiline = {true}
-            numberOfLines = {10}
+            placeholder="Title"
+            style={[styles.titleField]}
+            value={this.state.position.title}
+            onChangeText={(text) => this.saveTitle(text)}
           />
+          <HorizontalDivider />
+          <TextInput
+            placeholder="Instructor Name"
+            style={[styles.titleField]}
+            value={this.state.position.instructor}
+            onChangeText={(text) => this.saveInstructor(text)}
+          />
+          <HorizontalDivider />
+          <View style={styles.notesSection}>
+            <TextInput
+              placeholder="Notes"
+              style={styles.notesField}
+              value={this.state.position.notes}
+              onChangeText={(text) => this.saveData(text)}
+              multiline = {true}
+              numberOfLines = {10}
+            />
+          </View>
+          <HorizontalDivider />
+          <View style={styles.pickerSection}>
+            <Text style={{fontSize: 20, color: '#d3d3d3', marginLeft: 10, marginRight: 20}}>Syllabus : </Text>
+            <TouchableOpacity style={{marginTop: 5}} onPress={this.showPicker.bind(this)}>
+              <Text style={{fontSize: 20}}>{this.state.position.syllabus}</Text>
+            </TouchableOpacity>
+          </View>
+          <HorizontalDivider />
+          <View style={styles.tagsSection}>
+            <Text style={{fontSize: 20, color: '#d3d3d3', marginLeft: 10}}>Tags : </Text>
+          </View>
         </View>
-        <SectionDivider headerText="Syllabus" />
-        <View style={styles.syllabusSection}>
-        <TouchableOpacity style={{marginTop: 5}} onPress={this.showPicker.bind(this)}>
-          <Text>click here to select....</Text>
-        </TouchableOpacity>
-          <Text> -------------- </Text>
-          <Text style={{fontSize: 30}}>{this.state.position.syllabus}</Text>
+        <HorizontalDivider />
+        <View style={styles.videoSection}>
+          <Text style={{fontSize: 20, color: 'blue'}} onPress={this.addVideo.bind(this)}>
+            Add Video
+          </Text>
         </View>
-        <SectionDivider headerText="Tags" />
-        <View style={styles.tagsSection}>
-        </View>
-        <SectionDivider />
         <View style={styles.savePosition}>
           <Button onPress={this.savePositionData} style={{backgroundColor: '#007aff'}}>
             Save Position
@@ -174,37 +197,59 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  videoSection: {
-    height: 80,
+  notesSection: {
     paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  tagsSection: {
+    flexDirection: 'row',
+    height: 40,
+    paddingTop: 20,
     paddingBottom: 20,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  notesSection: {
-    height: 150
-  },
-  notesField: {
-    height: 100,
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderWidth:1,
-    borderColor: 'grey',
-    borderRadius: 5,
-    width: Dimensions.get('window').width -20
-  },
-  syllabusSection: {
-    height: 100,
+  pickerSection: {
+    flexDirection: 'row',
+    paddingTop: 10,
+    paddingBottom: 10,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  detailsSection: {
+    paddingTop: 1,
+    paddingBottom: 20,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  videoSection: {
+    height: 100,
+    paddingTop: 30
+  },
+  titleField: {
+    height: 50,
+    paddingLeft: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#FFFFFF'
+  },
+  notesField: {
+    height: 150,
+    borderWidth:1,
+    borderColor: 'transparent',
+    borderRadius: 5,
+    width: Dimensions.get('window').width -20
   },
   tagsSection: {
     justifyContent: 'center',
     alignItems: 'center'
   },
   savePosition: {
-    paddingTop: 10,
     height: 60,
+    paddingBottom: 10,
     justifyContent: 'center',
     alignItems: 'center'
   }
