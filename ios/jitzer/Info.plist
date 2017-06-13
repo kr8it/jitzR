@@ -35,8 +35,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>test</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>test</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>test</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FontAwesome.tff</string>

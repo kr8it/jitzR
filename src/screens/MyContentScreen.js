@@ -16,6 +16,9 @@ import {Input, Button, Card, CardSection, SectionDivider} from '../components/co
 import Picker from 'react-native-picker';
 import Video from 'react-native-video';
 import Ionicon from 'react-native-vector-icons/Ionicons';
+
+var ImagePicker = require('react-native-image-picker');
+
 let fullIcon
 let data = ['None', 'White Belt', 'Blue Belt', 'Black Belt'];
 
@@ -53,6 +56,43 @@ export default class MyContentScreen extends Component {
     }
   }
 
+  addVideo() {
+
+    var options = {
+      cameraType: 'back',
+      mediaType: 'video',
+      videoQuality: 'high',
+      durationLimit: 180,
+      storageOptions: {
+        cameraRoll: true,
+        waitUntilSaved: true
+      }
+    };
+
+    ImagePicker.launchCamera(options, (response)  => {
+      console.log('Response = ', response);
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      }
+      else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
+        let source = { uri: response.uri };
+        this.state.position.video = source
+        this.setState({"position": this.state.position})
+        // You can also display the image using data:
+        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+        // this.setState({
+        //   avatarSource: source
+        // });
+      }
+    });
+  }
+
   showPicker() {
     let pickerValue = this.state.position.syllabus
     Picker.init({
@@ -80,7 +120,7 @@ export default class MyContentScreen extends Component {
   }
 
   savePositionData = () => {
-      AlertIOS.alert('saved data ', this.state.position)
+      AlertIOS.alert('saved data ', JSON.stringify(this.state.position))
   };
 
   render() {
@@ -89,7 +129,7 @@ export default class MyContentScreen extends Component {
       <View style={styles.container}>
         <SectionDivider headerText="Media" />
         <View style={styles.videoSection}>
-          <Button style={{backgroundColor: 'grey'}}>
+          <Button style={{backgroundColor: 'grey'}} onPress={this.addVideo.bind(this)}>
             Add Video
           </Button>
         </View>
