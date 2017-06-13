@@ -14,6 +14,7 @@ import {
 
 import {Input, Button, Card, CardSection, SectionDivider, HorizontalDivider} from '../components/common';
 import Picker from 'react-native-picker';
+import CheckBox from 'react-native-checkbox';
 import Video from 'react-native-video';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
@@ -41,7 +42,8 @@ export default class MyContentScreen extends Component {
         title: '',
         instructor: '',
         notes:'',
-        syllabus: 'Select Belt Color'
+        tags: [],
+        syllabus: 'Choose Belt Color'
       }
     }
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -128,6 +130,11 @@ export default class MyContentScreen extends Component {
       this.setState({"position": this.state.position});
   }
 
+  updateTags(value) {
+      let currentTags = this.state.position.tags
+      this.setState({"position": this.state.position});
+  }
+
   savePositionData = () => {
       AlertIOS.alert('saved data ', JSON.stringify(this.state.position))
   };
@@ -153,7 +160,7 @@ export default class MyContentScreen extends Component {
           <HorizontalDivider />
           <View style={styles.notesSection}>
             <TextInput
-              placeholder="Notes"
+              placeholder="enter position notes here"
               style={styles.notesField}
               value={this.state.position.notes}
               onChangeText={(text) => this.saveData(text)}
@@ -165,12 +172,38 @@ export default class MyContentScreen extends Component {
           <View style={styles.pickerSection}>
             <Text style={{fontSize: 20, color: '#d3d3d3', marginLeft: 10, marginRight: 20}}>Syllabus : </Text>
             <TouchableOpacity style={{marginTop: 5}} onPress={this.showPicker.bind(this)}>
-              <Text style={{fontSize: 20}}>{this.state.position.syllabus}</Text>
+              <Text style={{fontSize: 15}}>{this.state.position.syllabus}</Text>
             </TouchableOpacity>
           </View>
           <HorizontalDivider />
-          <View style={styles.tagsSection}>
-            <Text style={{fontSize: 20, color: '#d3d3d3', marginLeft: 10}}>Tags : </Text>
+          <View style={{justifyContent: 'flex-start'}}>
+            <Text style={{fontSize: 20, paddingTop: 10, color: '#d3d3d3', marginLeft: 10, marginRight: 20}}>Select applicable tags below: </Text>
+            <View style={{flexDirection: 'row', marginLeft: 5}}>
+              <CheckBox
+                label='#submission'
+                labelStyle={{fontSize: 12}}
+                containerStyle={{paddingTop: 10}}
+                onChange={(checked) => this.updatetags('submission')}
+              />
+              <CheckBox
+                label='#bottom'
+                labelStyle={{fontSize: 12}}
+                containerStyle={{paddingTop: 10}}
+                onChange={(checked) => AlertIOS.alert('I am bottom', checked)}
+              />
+              <CheckBox
+                label='#escape'
+                labelStyle={{fontSize: 12}}
+                containerStyle={{paddingTop: 10}}
+                onChange={(checked) => AlertIOS.alert('I am bottom', checked)}
+              />
+              <CheckBox
+                label='#guard'
+                labelStyle={{fontSize: 12}}
+                containerStyle={{paddingTop: 10}}
+                onChange={(checked) => AlertIOS.alert('I am bottom', checked)}
+              />
+            </View>
           </View>
         </View>
         <HorizontalDivider />
@@ -192,6 +225,7 @@ export default class MyContentScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingLeft: 10,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -201,14 +235,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  tagsSection: {
-    flexDirection: 'row',
-    height: 40,
-    paddingTop: 20,
-    paddingBottom: 20,
     justifyContent: 'center',
     alignItems: 'center'
   },
