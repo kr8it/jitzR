@@ -130,8 +130,17 @@ export default class MyContentScreen extends Component {
       this.setState({"position": this.state.position});
   }
 
-  updateTags(value) {
+  updateTags(tagName, checkedStatus) {
+    console.log(`${tagName} has the status ${checkedStatus}`)
       let currentTags = this.state.position.tags
+      if(currentTags.includes(tagName)) {
+        if(!checkedStatus){
+          currentTags.splice(currentTags.indexOf(tagName), 1)
+        }
+      } else if(checkedStatus) {
+        currentTags.push(tagName)
+      }
+      this.state.position.tags=currentTags
       this.setState({"position": this.state.position});
   }
 
@@ -183,25 +192,25 @@ export default class MyContentScreen extends Component {
                 label='#submission'
                 labelStyle={{fontSize: 12}}
                 containerStyle={{paddingTop: 10}}
-                onChange={(checked) => this.updatetags('submission')}
+                onChange={(checked) => this.updateTags('submission', !checked)}
               />
               <CheckBox
                 label='#bottom'
                 labelStyle={{fontSize: 12}}
                 containerStyle={{paddingTop: 10}}
-                onChange={(checked) => AlertIOS.alert('I am bottom', checked)}
+                onChange={(checked) => this.updateTags('bottom', !checked)}
               />
               <CheckBox
                 label='#escape'
                 labelStyle={{fontSize: 12}}
                 containerStyle={{paddingTop: 10}}
-                onChange={(checked) => AlertIOS.alert('I am bottom', checked)}
+                onChange={(checked) => this.updateTags('escape', !checked)}
               />
               <CheckBox
                 label='#guard'
                 labelStyle={{fontSize: 12}}
                 containerStyle={{paddingTop: 10}}
-                onChange={(checked) => AlertIOS.alert('I am bottom', checked)}
+                onChange={(checked) => this.updateTags('guard', !checked)}
               />
             </View>
           </View>
